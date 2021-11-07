@@ -27,7 +27,9 @@
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            x = x + 10*dt
+            y = y + 10*dt
+            a = a + 2*Math.PI*dt;
+            x = 100 + 100*Math.sin(a);
 
             ctx.fillStyle = "white";
             ctx.fillRect(x, y, 20, 20);
