@@ -14,7 +14,16 @@
         let ctx = canvas.getContext("2d");
         canvas.width = 450;
         canvas.height = 450;
-        
+        desenha();
+
+        function desenha(){
+            ctx.fillStyle = "black";
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+            ctx.fillStyle = "white";
+            ctx.fillRect(20, 20, 20, 20);
+        }
+
     </script>
 </body>
 </html>
