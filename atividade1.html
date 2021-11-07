@@ -14,14 +14,26 @@
         let ctx = canvas.getContext("2d");
         canvas.width = 450;
         canvas.height = 450;
-        desenha();
+        let x = 150;
+        let y = 100;
+        let a = 0;
+        let t0;
+        let dt;
+        requestAnimationFrame(desenha);
 
-        function desenha(){
+        function desenha(t){
+            t0 = t0 ?? t;
+            dt = (t-t0)/1000;
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            x = x + 10*dt
+
             ctx.fillStyle = "white";
-            ctx.fillRect(20, 20, 20, 20);
+            ctx.fillRect(x, y, 20, 20);
+
+            requestAnimationFrame(desenha);
+            t0 = t;
         }
 
     </script>
