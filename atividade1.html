@@ -15,8 +15,9 @@
         canvas.width = 450;
         canvas.height = 450;
         let x = 150;
+        let vx = 0;
         let y = 100;
-        let a = 0;
+        let vy = 0;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -27,15 +28,36 @@
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            y = y + 10*dt
-            a = a + 2*Math.PI*dt;
-            x = 100 + 100*Math.sin(a);
+            x = x + vx*dt;
+            y = y + vy*dt;
+            
 
             ctx.fillStyle = "white";
             ctx.fillRect(x, y, 20, 20);
 
             requestAnimationFrame(desenha);
             t0 = t;
+        }
+
+        addEventListener("keydown", teclaPressionada);
+
+        function teclaPressionada(e){
+            switch(e.key){
+                case "ArrowUp":
+                    vy = -20;
+                    break;
+                case "ArrowDown":
+                    vy = +20;
+                    break;
+                case "ArrowLeft":
+                    vx = -20;
+                    break;
+                case "ArrowRight":
+                    vx = +20;
+                    break;
+                default:
+                    break;
+            }
         }
 
     </script>
