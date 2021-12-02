@@ -26,18 +26,22 @@
             mover: moverElemento
         };
 
-        let e = {
-            x : 300,
-            vx : 0,
-            ax : 0,
-            y : 200,
-            vy : 0,
-            ay : 0,
-            cor : "red",
-            desenhar: desenharElemento,
-            mover: moverElemento,
-            controlar : perseguirAlvo
-        };
+        const sprites = [];
+        for(let ne=0; ne<20; ne++){
+            let e = {
+                x : canvas.width*Math.random(),
+                vx : 0,
+                ax : 0,
+                y : canvas.height*Math.random(),
+                vy : 0,
+                ay : 0,
+                cor : "red",
+                desenhar: desenharElemento,
+                mover: moverElemento,
+                controlar : perseguirAlvo
+            };
+            sprites.push(e);
+        }
 
         const K = 180;
         let t0;
@@ -49,15 +53,17 @@
             dt = (t-t0)/1000;
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            //e.controlar({x:250, y:120});
-            e.controlar(p);
-
-            p.mover();
-            e.mover();
             
+            p.mover();
             p.desenhar();
-            e.desenhar();
+
+            for(let s=0; s<sprites.length; s++){
+                const sprite = sprites[s];
+                sprite.controlar(p);
+                sprite.mover();
+                sprite.desenhar();
+            }
+            
 
             requestAnimationFrame(desenha);
             t0 = t;
