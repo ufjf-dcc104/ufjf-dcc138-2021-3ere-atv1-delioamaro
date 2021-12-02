@@ -16,9 +16,11 @@
         canvas.height = 450;
         let x = 150;
         let vx = 0;
+        let ax = 0;
         let y = 100;
         let vy = 0;
-        const K = 80;
+        let ay = 0;
+        const K = 180;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -29,7 +31,9 @@
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            vx = vx + ax*dt
             x = x + vx*dt;
+            vy = vy + ay*dt;
             y = y + vy*dt;
             
 
@@ -46,16 +50,16 @@
         function teclaPressionada(e){
             switch(e.key){
                 case "ArrowUp":
-                    vy = -K;
+                    ay = -K;
                     break;
                 case "ArrowDown":
-                    vy = +K;
+                    ay = +K;
                     break;
                 case "ArrowLeft":
-                    vx = -K;
+                    ax = -K;
                     break;
                 case "ArrowRight":
-                    vx = +K;
+                    ax = +K;
                     break;
             }
         }
@@ -64,15 +68,19 @@
             switch(e.key){
                 case "ArrowUp":
                     vy = 0;
+                    ay = 0;
                     break;
                 case "ArrowDown":
                     vy = 0;
+                    ay = 0;
                     break;
                 case "ArrowLeft":
                     vx = 0;
+                    ax = 0;
                     break;
                 case "ArrowRight":
                     vx = 0;
+                    ax = 0;
                     break;
             }
         }
