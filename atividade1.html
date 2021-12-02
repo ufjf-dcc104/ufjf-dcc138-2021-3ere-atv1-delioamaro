@@ -20,6 +20,14 @@
         let y = 100;
         let vy = 0;
         let ay = 0;
+
+        let ex = 300;
+        let evx = 0;
+        let eax = 0;
+        let ey = 200;
+        let evy = 0;
+        let eay = 0;
+
         const K = 180;
         let t0;
         let dt;
@@ -31,14 +39,25 @@
             ctx.fillStyle = "black";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
+            eay = 0.5*(y-ey) - 0.2*evy;
+            eax = 0.5*(x-ex) - 0.2*evx;
+
             vx = vx + ax*dt
             x = x + vx*dt;
             vy = vy + ay*dt;
             y = y + vy*dt;
+
+            evx = evx + eax*dt
+            ex = ex + evx*dt;
+            evy = evy + eay*dt;
+            ey = ey + evy*dt;
             
 
             ctx.fillStyle = "white";
             ctx.fillRect(x, y, 20, 20);
+
+            ctx.fillStyle = "red";
+            ctx.fillRect(ex, ey, 20, 20);
 
             requestAnimationFrame(desenha);
             t0 = t;
