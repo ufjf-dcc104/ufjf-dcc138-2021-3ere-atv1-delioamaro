@@ -18,6 +18,7 @@
         let vx = 0;
         let y = 100;
         let vy = 0;
+        const K = 80;
         let t0;
         let dt;
         requestAnimationFrame(desenha);
@@ -45,16 +46,16 @@
         function teclaPressionada(e){
             switch(e.key){
                 case "ArrowUp":
-                    vy = -20;
+                    vy = -K;
                     break;
                 case "ArrowDown":
-                    vy = +20;
+                    vy = +K;
                     break;
                 case "ArrowLeft":
-                    vx = -20;
+                    vx = -K;
                     break;
                 case "ArrowRight":
-                    vx = +20;
+                    vx = +K;
                     break;
             }
         }
